@@ -24,7 +24,7 @@ const LoginPage = () => {
                             <a class="text-indigo-700 hover:text-pink-700 text-sm float-right pb-2" href="#">Forgot Password?</a>
                         </div>
                         <div>
-                            <input class="w-full bg-violet-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-4  rounded" type="submit" onClick={()=>navigate('chat')}/>
+                            <input class="w-full bg-violet-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-4  rounded" type="submit" onClick={()=>navigate('/chat/chats')}/>
                         </div>
                         <div>
                             <h1 class="text-indigo-700 hover:text-pink-700 text-sm float-right" href="#" onClick={() => SetSignup(!signup)}>Don't Have an Account?</h1>

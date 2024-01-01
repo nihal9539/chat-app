@@ -9,35 +9,9 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import "./Chatting.css"
+import { messages } from "../data/message";
 
-const messages = [
-  { id: 1, text: "Hi there!", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
 
-];
 
 const Chatting = () => {
   const [input, setInput] = React.useState("");

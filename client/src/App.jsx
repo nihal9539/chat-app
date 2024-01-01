@@ -4,9 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import LoginPage from './components/LoginPage/LoginPage'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Chat from './components/Chat/Chat'
+
 import ChatingSpace from './components/ChatinfSpace/ChatingSpace'
 import ChatSection from './components/ChatSection/ChatSection'
+import Home from './components/Chat/Home'
+import NotFound from './components/NotFound/NotFound'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,12 +19,12 @@ function App() {
         <Route path='/' element={<LoginPage />}>
 
         </Route>
-        <Route path='/chat' element={<Chat />}>
+        <Route path='/chat' element={<Home />}>
 
           <Route path='chats' element={<ChatSection />} />
-          <Route path='chatspace' element={<ChatingSpace />} />
+          <Route path=':id' element={<ChatingSpace />} />
         </Route>
-        <Route path='*' element={<Chat />}> </Route>
+        <Route path='*' element={<NotFound />}> </Route>
       </Routes>
     </BrowserRouter>
   )

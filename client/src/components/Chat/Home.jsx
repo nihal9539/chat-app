@@ -15,11 +15,34 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import ChatSection from '../ChatSection/ChatSection';
 import ChatingSpace from '../ChatinfSpace/ChatingSpace';
+import { MdLogout } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { IoInformationCircle } from "react-icons/io5";
+import { IoShareSocialSharp } from "react-icons/io5";
 import { Outlet } from 'react-router-dom';
 
 const drawerWidth = 240;
 
-export default function Chat() {
+export default function Home() {
+
+  const icons = [
+    {
+      name: "profile"
+      , icon: <FaUser size={20}/>
+    },
+    {
+      name: "Share"
+      , icon: <IoShareSocialSharp size={20}/>
+    },
+    {
+      name: "about",
+      icon: <IoInformationCircle size={20}/>
+    },
+    {
+      name: "Log out",
+      icon: <MdLogout size={20}/>
+    },
+  ]
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -41,30 +64,18 @@ export default function Chat() {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
+            {icons.map((icon , index) => (
+              <ListItem key={index} disablePadding>
                 <ListItemButton>
+                  <ListItemText className='capitalize font-medium pl-4' primary={icon.name} />
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    {icon.icon}
                   </ListItemIcon>
-                  <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding >
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+         
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

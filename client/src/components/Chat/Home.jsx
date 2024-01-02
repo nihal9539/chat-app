@@ -6,43 +6,50 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import ChatSection from '../ChatSection/ChatSection';
-import ChatingSpace from '../ChatinfSpace/ChatingSpace';
 import { MdLogout } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { IoInformationCircle } from "react-icons/io5";
 import { IoShareSocialSharp } from "react-icons/io5";
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+
 
 const drawerWidth = 240;
 
 export default function Home() {
-
+  const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem('user'))
+  console.log(user);
   const icons = [
     {
       name: "profile"
-      , icon: <FaUser size={20}/>
+      , icon: <FaUser size={20} />,
+      navigate: "/profile"
     },
     {
       name: "Share"
-      , icon: <IoShareSocialSharp size={20}/>
+      , icon: <IoShareSocialSharp size={20} />
     },
     {
       name: "about",
-      icon: <IoInformationCircle size={20}/>
+      icon: <IoInformationCircle size={20} />
     },
     {
       name: "Log out",
-      icon: <MdLogout size={20}/>
+      icon: <MdLogout size={20} />
     },
   ]
+  const handleNavigate = (name) => {
+    switch(name) {
+
+      case "profile":   return navigate('/profile');
+      case "Share":   return navigate('/Share') ;
+      case "about":   return navigate('/about') ;
+    }
+  }
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -64,9 +71,9 @@ export default function Home() {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {icons.map((icon , index) => (
+            {icons.map((icon, index) => (
               <ListItem key={index} disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={()=>handleNavigate(icon.name)}>
                   <ListItemText className='capitalize font-medium pl-4' primary={icon.name} />
                   <ListItemIcon>
                     {icon.icon}
@@ -75,13 +82,13 @@ export default function Home() {
               </ListItem>
             ))}
           </List>
-         
+
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-  
-      <Outlet/>
+
+        <Outlet />
       </Box>
     </Box>
   );

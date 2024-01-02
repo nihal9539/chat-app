@@ -4,7 +4,7 @@ import { Users } from "./model/UserModel.js";
 import cors from "cors"
 import { createChat, findChat, userChat } from "./Controller/ChatController.js";
 import { addMessage, getmessage } from "./Controller/MessgeController.js";
-import { register } from "./Controller/userController.js";
+import { getUser, loginUser, register } from "./Controller/userController.js";
 
 const app = express()
 app.use(express.json());
@@ -13,8 +13,14 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.send('Welcome');
 })
-app.post('/api/login', register);
 
+//login register
+app.post('/api/register', register);
+app.post('/api/login', loginUser);
+
+//get a user
+
+app.post('/user/:id', getUser);
 //router for chat
 
 app.post('/chat', createChat)

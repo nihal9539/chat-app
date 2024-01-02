@@ -14,7 +14,19 @@ const LoginPage = () => {
     // console.log(signup);
 
     const handleSubmit = () => {
-        // console.log(user);
+       
+            console.log(user);
+            axios.post('http://localhost:2000/api/login',
+                user
+            ).then((res) => {
+
+                console.log(res);
+                navigate('/chat/chats')
+            }).catch((err)=>{
+                console.log(err);
+            })
+    }
+    const handllogin = () => {
        
             console.log(user);
             axios.post('http://localhost:2000/api/login',
@@ -45,7 +57,7 @@ const LoginPage = () => {
                             <a className="text-indigo-700 hover:text-pink-700 text-sm float-right pb-2" href="#">Forgot Password?</a>
                         </div>
                         <div>
-                            <input className="w-full bg-violet-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-4  rounded" type="submit" onClick={handleSubmit} />
+                            <input className="w-full bg-violet-700 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-4  rounded" type="submit" onClick={handllogin} />
                         </div>
                         <div>
                             <h1 className="text-indigo-700 hover:text-pink-700 text-sm float-right" href="#" onClick={() => SetSignup(!signup)}>Don't Have an Account?</h1>

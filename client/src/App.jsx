@@ -9,6 +9,7 @@ import ChatingSpace from './components/ChatinfSpace/ChatingSpace'
 import ChatSection from './components/ChatSection/ChatSection'
 import Home from './components/Chat/Home'
 import NotFound from './components/NotFound/NotFound'
+import Chattings from './components/Chattings/Chattings'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,7 +23,7 @@ function App() {
         <Route path='/chat' element={<Home />}>
 
           <Route path='chats' element={<ChatSection />} />
-          <Route path=':id' element={<ChatingSpace />} />
+          <Route path=':id' element={<Chattings />} />
         </Route>
         <Route path='*' element={<NotFound />}> </Route>
       </Routes>

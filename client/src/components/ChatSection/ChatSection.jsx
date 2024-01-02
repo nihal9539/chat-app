@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import  from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -7,16 +7,18 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Fragment, useState } from 'react';
+import { chatting } from '../data/chatting';
 
 export default function ChatSection() {
     const a = [1, 2, 3, 4, 5, 6]
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate()
 
     return (
         <List sx={{ width: '100%', maxWidth: 460, bgcolor: 'background.paper' }}>
-            {a.map((val, index) => (<div>
-                <NavLink replace to={'/chat/chatspace'}>
+            {chatting.map((val, index) => (<div>
+                <NavLink replace to={`/chat/${val.id}`}>
                     <ListItem alignItems="flex-start" >
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -24,7 +26,7 @@ export default function ChatSection() {
                         <ListItemText
                             primary="Brunch this weekend?"
                             secondary={
-                                <React.Fragment>
+                                <Fragment>
                                     <Typography
                                         sx={{ display: 'inline' }}
                                         component="span"
@@ -34,7 +36,7 @@ export default function ChatSection() {
                                         Ali Connors
                                     </Typography>
                                     {" — I'll be in your neighborhood doing errands this…"}
-                                </React.Fragment>
+                                </Fragment>
                             }
                         />
 

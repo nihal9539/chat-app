@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { logIn } from '../../api/api';
+import { logIn, register } from '../../api/api';
 
 
 const LoginPage = () => {
@@ -23,11 +23,12 @@ const LoginPage = () => {
             toast.error("Complete The form")
         } else if (user.password !== user.conformPassword) {
             toast.error("Conform password is not same")
-        } else if (user.password.length <= 8 || user.conformPassword <= 8) {
+        } else if (user.password.length <= 7 || user.conformPassword <= 8) {
             toast.error("Password must have length of 8")
         } else {
             register(user).then((res) => {
-                localStorage.setItem('user', user.username)
+                localStorage.clear()
+                localStorage.setItem('user', JSON.stringify(res.data.user))
                 console.log(res);
                 navigate('/chat/chats')
             }).catch((err) => {
@@ -42,11 +43,13 @@ console.log("hii");
             toast.error("Complete the form")
         } else {
             logIn(user).then((res) => {
+                console.log(res);
 
                 if (res.status === 404) {
                     toast.error("User Login")
                 }
-                localStorage.setItem('user', JSON.stringify(user.username))
+                localStorage.clear()
+                localStorage.setItem('user', JSON.stringify(res.data.user))
                 
                 setUser({})
                 navigate('/chat/chats')

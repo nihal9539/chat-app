@@ -7,8 +7,8 @@ import {
   Grid,
   Paper,
 } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import "./Chatting.css"
+import ChatSpaceNav from "../ChatSpaceNav/ChatSpaceNav";
 
 
 export const messages = [
@@ -25,23 +25,18 @@ export const messages = [
 const Chatting = () => {
   const [input, setInput] = React.useState("");
 
-  const handleSend = () => {
-    if (input.trim() !== "") {
-      console.log(input);
-      setInput("");
-    }
-  };
 
-  const handleInputChange = (event) => {
-    setInput(event.target.value);
-  };
+
+
 
   return (
       <div className="overflow-y-scroll scroll">
+            <ChatSpaceNav/>
+
       <Box
       sx={{
           height: "500px",
-          width:"495px",
+          width:"355px",
         //   maxWidth:"490px",
           display: "flex",
           flexDirection: "column",

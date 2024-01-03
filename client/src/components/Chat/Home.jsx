@@ -21,7 +21,7 @@ const drawerWidth = 240;
 
 export default function Home() {
   const navigate = useNavigate()
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = (JSON.parse(localStorage.getItem('user')))
   console.log(user);
   const icons = [
     {

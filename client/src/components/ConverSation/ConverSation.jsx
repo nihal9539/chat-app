@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { getUser } from '../../api/ChatRequests'
 import { NavLink } from 'react-router-dom'
-import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
+import { Divider, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar';
 
 
@@ -26,7 +26,7 @@ const ConverSation = ({data,currentUserId}) => {
 
   return (
     <div>
-       <NavLink replace >
+       {/* <NavLink replace >
                     <ListItem alignItems="flex-center" >
                         <ListItemAvatar  className='pl-10'>
                             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -38,9 +38,13 @@ const ConverSation = ({data,currentUserId}) => {
                             
                         />
 
-
+                                   
                     </ListItem>
-                </NavLink>
+                    <Divider variant="inset" component="li" />
+                </NavLink> */}
+                <div>
+                    hiierctvygbhunjimk,sxrdcftvygbhunijmk
+                </div>
     </div>
   )
 }

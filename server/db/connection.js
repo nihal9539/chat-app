@@ -1,10 +1,11 @@
-const url = "mongodb+srv://mohammednihal691:nihal691@cluster0.ib1lt60.mongodb.net/chattApp?retryWrites=true&w=majority"
+const url = "mongodb+srv://mohammednihal691:nihal691@cluster0.ib1lt60.mongodb.net/chatapps?retryWrites=true&w=majority"
 
 import mongoose from 'mongoose';
-export const connectDB =  () => {
+export const connectDB = async () => {
 
     try {
-        const conn =  mongoose.connect(url, {
+        await mongoose.connect(url, {
+
         });
         console.log(`MongoDB Connected: {conn.connection.host}`);
     } catch (error) {

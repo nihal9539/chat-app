@@ -1,10 +1,11 @@
 import express from "express"
-import { connectDB } from "./db/connection.js"
-import { Users } from "./model/UserModel.js";
+// import { connectDB } from "./db/connection.js"
+// import { Users } from "./model/UserModel.js";
 import cors from "cors"
 import { createChat, findChat, userChat } from "./Controller/ChatController.js";
 import { addMessage, getmessage } from "./Controller/MessgeController.js";
 import { getUser, loginUser, register } from "./Controller/userController.js";
+import mongoose from "mongoose";
 
 const app = express()
 app.use(express.json());
@@ -34,12 +35,15 @@ app.post('/message', addMessage)
 app.get('/message/:chatId', getmessage)
 
 
-app.listen(2000, () => {
-    try {
-        console.log("connect");
-        connectDB()
-    } catch (error) {
-        console.log(error);
-        throw err
-    }
-})
+//MongoDb Connect
+
+mongoose.connect(("mongodb+srv://user200:user200@cluster0.ib1lt60.mongodb.net/chattApp?retryWrites=true&w=majority"))
+    .then(() => {
+        console.log("Database is connect");
+        app.listen(2000, () => {
+            console.log("PORT is 5000 ");
+        })
+
+    }).catch((err) => {
+        console.log(err);
+    })

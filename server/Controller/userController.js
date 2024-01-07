@@ -12,10 +12,14 @@ export const register = async (req, res) => {
     try {
 
         const existUser = await Users.findOne({ username })
+        console.log("hii");
+        console.log(existUser);
         if (existUser) {
+            // console.log("hii");
             res.status(400).json({ message: "Already Exist" })
         }
         const user = await newUser.save()
+        console.log(user);
         const token = jwt.sign({
             username: user.username, id: user._id
 
@@ -32,8 +36,8 @@ export const loginUser = async (req, res) => {
     console.log(req.body);
 
     try {
-        const user = await Users.findOne({ username });
-        // const user = await Users.findOne({ username: username })
+        const user = await Users.findOne({ username })
+        console.log("user");
         if (user) {
             console.log("user");
             const validiy = await bcrpy.compare(password, user.password)

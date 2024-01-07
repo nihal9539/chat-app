@@ -26,6 +26,7 @@ const LoginPage = () => {
         } else if (user.password.length <= 7 || user.conformPassword <= 8) {
             toast.error("Password must have length of 8")
         } else {
+            console.log(user);
             register(user).then((res) => {
                 localStorage.clear()
                 localStorage.setItem('user', JSON.stringify(res.data.user))
@@ -54,9 +55,9 @@ console.log("hii");
                 setUser({})
                 navigate('/chat/chats')
             }).catch((err) => {
+                console.log(err.message);
                 toast.error("Something Went Wrong")
 
-                console.log(err);
             })
         }
     }

@@ -34,9 +34,10 @@ export default function ChatSection() {
 
     return (
         <div className='w-full flex flex-row gap-5'>
-            <List sx={{ width: '100%', maxWidth: 350, bgcolor: 'background.paper' }}>
+            <List sx={{ width: '100%', maxWidth: 250, bgcolor: 'background.paper' }}>
                 {chats.map((chat, index) => (<div>
                     <div onClick={()=>setCurrentChat(chat) }>
+                        {/* {console.log(chat,user._id)} */}
                         <ConverSation data={chat} currentUserId={user._id} />
                     </div>
                 </div>))}
